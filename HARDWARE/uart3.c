@@ -353,7 +353,6 @@ void TX2_Transmit_Start(void)
  * - 数据长度(1字节): 包括数据长度字节后的所有数据的长度
  * - 电机位置数据(12*4=48字节): 12个电机的位置，每个电机4字节
  * - 电机速度数据(12*1=12字节): 12个电机的速度，每个电机1字节
- * - 机械爪电机位置(2*4=8字节): GM6020和C610电机的绝对位置
  * - IMU欧拉角数据(4*3*4=48字节): 4个IMU的欧拉角(pitch, roll, yaw)，每个角度为4字节浮点数
  * - CRC16校验(2字节)
  */
@@ -387,19 +386,6 @@ void TX2_Send_Motor_IMU_Data(void)
         // 将速度值添加到缓冲区（仅1字节）
         tx_buffer[tx_index++] = currentSpeed_snake[i] & 0xFF;
     }
-    
-    // 5. 添加机械爪电机位置数据 (8字节)
-    // GM6020电机绝对位置 (4字节)
-    tx_buffer[tx_index++] = (GM6020_absolute_position >> 24) & 0xFF;
-    tx_buffer[tx_index++] = (GM6020_absolute_position >> 16) & 0xFF;
-    tx_buffer[tx_index++] = (GM6020_absolute_position >> 8) & 0xFF;
-    tx_buffer[tx_index++] = GM6020_absolute_position & 0xFF;
-    
-    // C610电机绝对位置 (4字节)
-    tx_buffer[tx_index++] = (C610_absolute_position >> 24) & 0xFF;
-    tx_buffer[tx_index++] = (C610_absolute_position >> 16) & 0xFF;
-    tx_buffer[tx_index++] = (C610_absolute_position >> 8) & 0xFF;
-    tx_buffer[tx_index++] = C610_absolute_position & 0xFF;
     
     // 6. 添加4个IMU的欧拉角数据 (4*3*4=48字节)
     // USART2 IMU数据 - 使用get_eular2获取
