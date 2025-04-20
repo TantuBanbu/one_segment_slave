@@ -59,3 +59,8 @@
 .\objects\uart3.o: ..\HARDWARE\pwm.h
 .\objects\uart3.o: ..\HARDWARE\imu.h
 .\objects\uart3.o: ..\HARDWARE\gpio.h
+.\objects\uart3.o: ..\HARDWARE\usart69050.h
+.\objects\uart3.o: D:\LenovoSoftstore\KEIK5MDK\ARM\ARMCC\Bin\..\include\stdbool.h
+.\objects\uart3.o: ..\HARDWARE\usart2.h
+.\objects\uart3.o: ..\HARDWARE\usart7.h
+.\objects\uart3.o: ..\HARDWARE\usart8.h

@@ -16,6 +16,12 @@
 #include "usart7.h"
 #include "usart8.h"
 
+// 声明获取IMU欧拉角数据的函数
+extern int get_eular2(float* e);
+extern int get_eular6(float* e);
+extern int get_eular7(float* e);
+extern int get_eular8(float* e);
+
 // 如果使用ucos操作系统的话需要下面的头文件
 #if SYSTEM_SUPPORT_UCOS
 #include "includes.h"					//ucos 使用	  
@@ -341,121 +347,118 @@ void TX2_Transmit_Start(void)
 }
 
 /**
- * @brief 发送电机和IMU数据给上位机
+ * 向上位机发送电机和IMU数据
  * 数据格式：
- * - 帧头: 0xBB 0x66 (2字节)
- * - 长度: 数据长度(1字节)
- * - 数据:
- *   - 蛇形机器人电机位置(12*4字节)
- *   - 蛇形机器人电机速度(12字节)
- *   - GM6020电机位置(4字节)
- *   - C610电机位置(4字节)
- *   - 四个IMU欧拉角数据(4*3*4字节)
+ * - 帧头(2字节): 0xAA 0x55
+ * - 数据长度(1字节): 包括数据长度字节后的所有数据的长度
+ * - 电机位置数据(12*4=48字节): 12个电机的位置，每个电机4字节
+ * - 电机速度数据(12*1=12字节): 12个电机的速度，每个电机1字节
+ * - 机械爪电机位置(2*4=8字节): GM6020和C610电机的绝对位置
+ * - IMU欧拉角数据(4*3*4=48字节): 4个IMU的欧拉角(pitch, roll, yaw)，每个角度为4字节浮点数
  * - CRC16校验(2字节)
  */
 void TX2_Send_Motor_IMU_Data(void)
 {
-    // 定义发送缓冲区
-    #define TX_BUF_SIZE 150
-    uint8_t tx_buffer[TX_BUF_SIZE];
-    uint16_t offset = 0;
+    uint8_t tx_buffer[256]; // 发送缓冲区
+    uint16_t tx_index = 0;  // 发送缓冲区索引
+    uint16_t data_length = 0; // 数据长度
+    uint16_t crc16; // CRC16校验值
+    float temp_eular[3]; // 临时存储欧拉角数据
     
-    // 添加帧头
-    tx_buffer[offset++] = 0xBB;
-    tx_buffer[offset++] = 0x66;
+    // 1. 添加帧头 0xAA 0x55
+    tx_buffer[tx_index++] = 0xAA;
+    tx_buffer[tx_index++] = 0x55;
     
-    // 保留长度字节位置，后面计算
-    uint8_t length_pos = offset;
-    offset++;
+    // 2. 数据长度位置先预留，等计算完毕后再填充
+    uint8_t length_index = tx_index; // 记录长度字段的位置
+    tx_index++; // 跳过长度字段
     
-    // 添加蛇形机器人电机位置 (12 * 4 = 48字节)
-    for(uint8_t i = 0; i < 12; i++)
-    {
-        tx_buffer[offset++] = (currentPosition_snake[i] >> 24) & 0xFF;
-        tx_buffer[offset++] = (currentPosition_snake[i] >> 16) & 0xFF;
-        tx_buffer[offset++] = (currentPosition_snake[i] >> 8) & 0xFF;
-        tx_buffer[offset++] = currentPosition_snake[i] & 0xFF;
+    // 3. 添加12个电机的位置数据 (48字节)
+    for (int i = 0; i < 12; i++) {
+        // 将整型转为4字节数据添加到缓冲区
+        tx_buffer[tx_index++] = (currentPosition_snake[i] >> 24) & 0xFF;
+        tx_buffer[tx_index++] = (currentPosition_snake[i] >> 16) & 0xFF;
+        tx_buffer[tx_index++] = (currentPosition_snake[i] >> 8) & 0xFF;
+        tx_buffer[tx_index++] = currentPosition_snake[i] & 0xFF;
     }
     
-    // 添加蛇形机器人电机速度 (12字节)
-    for(uint8_t i = 0; i < 12; i++)
-    {
-        tx_buffer[offset++] = currentSpeed_snake[i] & 0xFF;
+    // 4. 添加12个电机的速度数据 (12字节)
+    for (int i = 0; i < 12; i++) {
+        // 将速度值添加到缓冲区（仅1字节）
+        tx_buffer[tx_index++] = currentSpeed_snake[i] & 0xFF;
     }
     
-    // 添加GM6020电机绝对位置 (4字节)
-    tx_buffer[offset++] = (GM6020_absolute_position >> 24) & 0xFF;
-    tx_buffer[offset++] = (GM6020_absolute_position >> 16) & 0xFF;
-    tx_buffer[offset++] = (GM6020_absolute_position >> 8) & 0xFF;
-    tx_buffer[offset++] = GM6020_absolute_position & 0xFF;
+    // 5. 添加机械爪电机位置数据 (8字节)
+    // GM6020电机绝对位置 (4字节)
+    tx_buffer[tx_index++] = (GM6020_absolute_position >> 24) & 0xFF;
+    tx_buffer[tx_index++] = (GM6020_absolute_position >> 16) & 0xFF;
+    tx_buffer[tx_index++] = (GM6020_absolute_position >> 8) & 0xFF;
+    tx_buffer[tx_index++] = GM6020_absolute_position & 0xFF;
     
-    // 添加C610电机绝对位置 (4字节)
-    tx_buffer[offset++] = (C610_absolute_position >> 24) & 0xFF;
-    tx_buffer[offset++] = (C610_absolute_position >> 16) & 0xFF;
-    tx_buffer[offset++] = (C610_absolute_position >> 8) & 0xFF;
-    tx_buffer[offset++] = C610_absolute_position & 0xFF;
+    // C610电机绝对位置 (4字节)
+    tx_buffer[tx_index++] = (C610_absolute_position >> 24) & 0xFF;
+    tx_buffer[tx_index++] = (C610_absolute_position >> 16) & 0xFF;
+    tx_buffer[tx_index++] = (C610_absolute_position >> 8) & 0xFF;
+    tx_buffer[tx_index++] = C610_absolute_position & 0xFF;
     
-    // 添加IMU欧拉角数据 (4个IMU * 3轴 * 4字节 = 48字节)
-    // IMU6数据
-    float tmp_eular[3];
-    
-    get_eular6(tmp_eular);
-    for(uint8_t i = 0; i < 3; i++)
-    {
-        uint8_t* p = (uint8_t*)&tmp_eular[i];
-        tx_buffer[offset++] = p[0];
-        tx_buffer[offset++] = p[1];
-        tx_buffer[offset++] = p[2];
-        tx_buffer[offset++] = p[3];
+    // 6. 添加4个IMU的欧拉角数据 (4*3*4=48字节)
+    // USART2 IMU数据 - 使用get_eular2获取
+    get_eular2(temp_eular);
+    for (int i = 0; i < 3; i++) {
+        uint8_t *p = (uint8_t*)&temp_eular[i]; // 将浮点数转为4字节
+        
+        tx_buffer[tx_index++] = p[0];
+        tx_buffer[tx_index++] = p[1];
+        tx_buffer[tx_index++] = p[2];
+        tx_buffer[tx_index++] = p[3];
     }
     
-    // IMU2数据
-    get_eular2(tmp_eular);
-    for(uint8_t i = 0; i < 3; i++)
-    {
-        uint8_t* p = (uint8_t*)&tmp_eular[i];
-        tx_buffer[offset++] = p[0];
-        tx_buffer[offset++] = p[1];
-        tx_buffer[offset++] = p[2];
-        tx_buffer[offset++] = p[3];
+    // USART7 IMU数据 - 使用get_eular7获取
+    get_eular7(temp_eular);
+    for (int i = 0; i < 3; i++) {
+        uint8_t *p = (uint8_t*)&temp_eular[i]; // 将浮点数转为4字节
+        
+        tx_buffer[tx_index++] = p[0];
+        tx_buffer[tx_index++] = p[1];
+        tx_buffer[tx_index++] = p[2];
+        tx_buffer[tx_index++] = p[3];
     }
     
-    // IMU7数据
-    get_eular7(tmp_eular);
-    for(uint8_t i = 0; i < 3; i++)
-    {
-        uint8_t* p = (uint8_t*)&tmp_eular[i];
-        tx_buffer[offset++] = p[0];
-        tx_buffer[offset++] = p[1];
-        tx_buffer[offset++] = p[2];
-        tx_buffer[offset++] = p[3];
+    // USART8 IMU数据 - 使用get_eular8获取
+    get_eular8(temp_eular);
+    for (int i = 0; i < 3; i++) {
+        uint8_t *p = (uint8_t*)&temp_eular[i]; // 将浮点数转为4字节
+        
+        tx_buffer[tx_index++] = p[0];
+        tx_buffer[tx_index++] = p[1];
+        tx_buffer[tx_index++] = p[2];
+        tx_buffer[tx_index++] = p[3];
     }
     
-    // IMU8数据
-    get_eular8(tmp_eular);
-    for(uint8_t i = 0; i < 3; i++)
-    {
-        uint8_t* p = (uint8_t*)&tmp_eular[i];
-        tx_buffer[offset++] = p[0];
-        tx_buffer[offset++] = p[1];
-        tx_buffer[offset++] = p[2];
-        tx_buffer[offset++] = p[3];
+    // USART69050 IMU数据 - 使用get_eular6获取
+    get_eular6(temp_eular);
+    for (int i = 0; i < 3; i++) {
+        uint8_t *p = (uint8_t*)&temp_eular[i]; // 将浮点数转为4字节
+        
+        tx_buffer[tx_index++] = p[0];
+        tx_buffer[tx_index++] = p[1];
+        tx_buffer[tx_index++] = p[2];
+        tx_buffer[tx_index++] = p[3];
     }
     
-    // 填写数据长度 (不包括帧头、长度字节和CRC)
-    tx_buffer[length_pos] = offset - 3;
+    // 7. 计算数据长度并填充到之前预留的位置
+    data_length = tx_index - length_index - 1; // 减去帧头和长度字段本身
+    tx_buffer[length_index] = data_length;
     
-    // 计算CRC
-    uint16_t crc = calc_crc16_modbus(tx_buffer, offset);
-    tx_buffer[offset++] = (crc >> 8) & 0xFF;  // 高字节
-    tx_buffer[offset++] = crc & 0xFF;         // 低字节
+    // 8. 计算CRC16校验值并添加到缓冲区末尾
+    crc16 = calc_crc16_modbus(tx_buffer, tx_index);
+    tx_buffer[tx_index++] = (crc16 >> 8) & 0xFF; // CRC高字节
+    tx_buffer[tx_index++] = crc16 & 0xFF;        // CRC低字节
     
-    // 发送数据
-    for(uint16_t i = 0; i < offset; i++)
-    {
-        USART_ClearFlag(USART3, USART_FLAG_TC);
+    // 9. 通过USART3发送整个数据包
+    for (uint16_t i = 0; i < tx_index; i++) {
         USART_SendData(USART3, tx_buffer[i]);
-        while(USART_GetFlagStatus(USART3, USART_FLAG_TXE) == RESET);
+        while(USART_GetFlagStatus(USART3, USART_FLAG_TXE) == RESET); // 等待发送完成
     }
 }
 
