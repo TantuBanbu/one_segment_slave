@@ -12,13 +12,13 @@
 #include "includes.h"
 #include "usart69050.h"
  
-//ÈÎÎñÓÅÏÈ¼¶
+//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¼ï¿½
 #define START_TASK_PRIO		3
-//ÈÎÎñ¶ÑÕ»´óÐ¡	
+//ï¿½ï¿½ï¿½ï¿½ï¿½Õ»ï¿½ï¿½Ð¡	
 #define START_STK_SIZE 		128
-//ÈÎÎñ¿ØÖÆ¿é
+//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¿ï¿½
 OS_TCB StartTaskTCB;
-//ÈÎÎñ¶ÑÕ»	
+//ï¿½ï¿½ï¿½ï¿½ï¿½Õ»	
 CPU_STK START_TASK_STK[START_STK_SIZE];
 
 #define INIT_TASK_PRIO		4
@@ -55,13 +55,13 @@ OS_TCB TIMETaskTCB;
 CPU_STK TIME_TASK_STK[TIME_STK_SIZE];
 #endif
 
-OS_TMR tmr1;    //¶¨Ê±Æ÷1
-OS_TMR tmr2;    //¶¨Ê±Æ÷2
+OS_TMR tmr1;    //ï¿½ï¿½Ê±ï¿½ï¿½1
+OS_TMR tmr2;    //ï¿½ï¿½Ê±ï¿½ï¿½2
 
-void tmr1_callback(void *p_tmr, void *p_arg); 	//¶¨Ê±Æ÷1»Øµ÷º¯Êý
-void tmr2_callback(void *p_tmr, void *p_arg); 	//¶¨Ê±Æ÷2»Øµ÷º¯Êý
+void tmr1_callback(void *p_tmr, void *p_arg); 	//ï¿½ï¿½Ê±ï¿½ï¿½1ï¿½Øµï¿½ï¿½ï¿½ï¿½ï¿½
+void tmr2_callback(void *p_tmr, void *p_arg); 	//ï¿½ï¿½Ê±ï¿½ï¿½2ï¿½Øµï¿½ï¿½ï¿½ï¿½ï¿½
 
-//¿ªÊ¼ÈÎÎñº¯Êý
+//ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 void start_task(void *p_arg)
 	{
 	OS_ERR err;
@@ -70,30 +70,30 @@ void start_task(void *p_arg)
 
 	CPU_Init();
 #if OS_CFG_STAT_TASK_EN > 0u
-   OSStatTaskCPUUsageInit(&err);  	//Í³¼ÆÈÎÎñ                
+   OSStatTaskCPUUsageInit(&err);  	//Í³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½                
 #endif
 		delay_ms(3000);
 	
-	//´´½¨¶¨Ê±Æ÷1
-	OSTmrCreate((OS_TMR		*)&tmr1,		//¶¨Ê±Æ÷1
-                (CPU_CHAR	*)"tmr1",		//¶¨Ê±Æ÷Ãû×Ö
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½1
+	OSTmrCreate((OS_TMR		*)&tmr1,		//ï¿½ï¿½Ê±ï¿½ï¿½1
+                (CPU_CHAR	*)"tmr1",		//ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
                 (OS_TICK	 )50,			//50*10=500ms
                 (OS_TICK	 )0,         
-                (OS_OPT		 )OS_OPT_TMR_ONE_SHOT, //µ¥´Î¶¨Ê±Æ÷
-                (OS_TMR_CALLBACK_PTR)tmr1_callback,//¶¨Ê±Æ÷1»Øµ÷º¯Êý
-                (void	    *)0,			//²ÎÊýÎª0
-                (OS_ERR	    *)&err);		//·µ»ØµÄ´íÎóÂë					
-  //´´½¨¶¨Ê±Æ÷2
-	OSTmrCreate((OS_TMR		*)&tmr2,		//¶¨Ê±Æ÷1
-                (CPU_CHAR	*)"tmr2",		//¶¨Ê±Æ÷Ãû×Ö
+                (OS_OPT		 )OS_OPT_TMR_ONE_SHOT, //ï¿½ï¿½ï¿½Î¶ï¿½Ê±ï¿½ï¿½
+                (OS_TMR_CALLBACK_PTR)tmr1_callback,//ï¿½ï¿½Ê±ï¿½ï¿½1ï¿½Øµï¿½ï¿½ï¿½ï¿½ï¿½
+                (void	    *)0,			//ï¿½ï¿½ï¿½ï¿½Îª0
+                (OS_ERR	    *)&err);		//ï¿½ï¿½ï¿½ØµÄ´ï¿½ï¿½ï¿½ï¿½ï¿½					
+  //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½2
+	OSTmrCreate((OS_TMR		*)&tmr2,		//ï¿½ï¿½Ê±ï¿½ï¿½1
+                (CPU_CHAR	*)"tmr2",		//ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
                 (OS_TICK	 )10,			//10*10=100ms
                 (OS_TICK	 )0,         
-                (OS_OPT		 )OS_OPT_TMR_ONE_SHOT, //µ¥´Î¶¨Ê±Æ÷
-                (OS_TMR_CALLBACK_PTR)tmr2_callback,//¶¨Ê±Æ÷1»Øµ÷º¯Êý
-                (void	    *)0,			//²ÎÊýÎª0
-                (OS_ERR	    *)&err);		//·µ»ØµÄ´íÎóÂë			
-	OS_CRITICAL_ENTER();	//½øÈëÁÙ½çÇø					
-//´´½¨³õÊ¼»¯ÈÎÎñ
+                (OS_OPT		 )OS_OPT_TMR_ONE_SHOT, //ï¿½ï¿½ï¿½Î¶ï¿½Ê±ï¿½ï¿½
+                (OS_TMR_CALLBACK_PTR)tmr2_callback,//ï¿½ï¿½Ê±ï¿½ï¿½1ï¿½Øµï¿½ï¿½ï¿½ï¿½ï¿½
+                (void	    *)0,			//ï¿½ï¿½ï¿½ï¿½Îª0
+                (OS_ERR	    *)&err);		//ï¿½ï¿½ï¿½ØµÄ´ï¿½ï¿½ï¿½ï¿½ï¿½			
+	OS_CRITICAL_ENTER();	//ï¿½ï¿½ï¿½ï¿½ï¿½Ù½ï¿½ï¿½ï¿½					
+//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	OSTaskCreate(  (OS_TCB 	* )&InitTaskTCB,		
 				         (CPU_CHAR	* )"Init task", 		
                  (OS_TASK_PTR )Init_task, 			
@@ -173,47 +173,49 @@ void start_task(void *p_arg)
                  (OS_ERR 	* )&err);			
 #endif						
 								 
-		OS_TaskSuspend((OS_TCB*)&CHASISTaskTCB,&err);       //¹ÒÆðµ×ÅÌÈÎÎñ								 
-		OS_TaskSuspend((OS_TCB*)&GIMBALTaskTCB,&err);       //¹ÒÆðÔÆÌ¨ÈÎÎñ
-    OS_TaskSuspend((OS_TCB*)&GUNTaskTCB,&err);          //¹ÒÆðÉä»÷ÈÎÎñ
-//	  OS_TaskSuspend((OS_TCB*)&TIMETaskTCB,&err);          //¹ÒÆðÊ±¼äÈÎÎñ
-		OS_TaskSuspend((OS_TCB*)&StartTaskTCB,&err);		    //¹ÒÆð¿ªÊ¼ÈÎÎñ			
+#if EN_CHASIS_TASK								 
+		OS_TaskSuspend((OS_TCB*)&CHASISTaskTCB,&err);       //								 
+#endif
+		OS_TaskSuspend((OS_TCB*)&GIMBALTaskTCB,&err);       //Ì¨
+    OS_TaskSuspend((OS_TCB*)&GUNTaskTCB,&err);          //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+//	  OS_TaskSuspend((OS_TCB*)&TIMETaskTCB,&err);          //ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		OS_TaskSuspend((OS_TCB*)&StartTaskTCB,&err);		    //ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½			
 								 
-	OS_CRITICAL_EXIT();	//ÍÆ³öÁÙ½çÇø   
+	OS_CRITICAL_EXIT();	//ï¿½Æ³ï¿½ï¿½Ù½ï¿½ï¿½ï¿½   
 }
 
 void StartTaskCreate(void){
 	OS_ERR err;
-	OSTaskCreate(  (OS_TCB 	* )&StartTaskTCB,		//ÈÎÎñ¿ØÖÆ¿é
-								 (CPU_CHAR * )"start task", 		//ÈÎÎñÃû×Ö
-                 (OS_TASK_PTR )start_task, 			//ÈÎÎñº¯Êý
-                 (void		* )0,					//´«µÝ¸øÈÎÎñº¯ÊýµÄ²ÎÊý
-                 (OS_PRIO	  )START_TASK_PRIO,     //ÈÎÎñÓÅÏÈ¼¶
-                 (CPU_STK  * )&START_TASK_STK[0],	//ÈÎÎñ¶ÑÕ»»ùµØÖ·
-                 (CPU_STK_SIZE)START_STK_SIZE/10,	//ÈÎÎñ¶ÑÕ»Éî¶ÈÏÞÎ»
-                 (CPU_STK_SIZE)START_STK_SIZE,		//ÈÎÎñ¶ÑÕ»´óÐ¡
-                 (OS_MSG_QTY)0,					//ÈÎÎñÄÚ²¿ÏûÏ¢¶ÓÁÐÄÜ¹»½ÓÊÕµÄ×î´óÏûÏ¢ÊýÄ¿,Îª0Ê±½ûÖ¹½ÓÊÕÏûÏ¢
-                 (OS_TICK	  )0,					//µ±Ê¹ÄÜÊ±¼äÆ¬ÂÖ×ªÊ±µÄÊ±¼äÆ¬³¤¶È£¬Îª0Ê±ÎªÄ¬ÈÏ³¤¶È£¬
-                 (void   	* )0,					//ÓÃ»§²¹³äµÄ´æ´¢Çø
-                 (OS_OPT    )OS_OPT_TASK_STK_CHK|OS_OPT_TASK_STK_CLR, //ÈÎÎñÑ¡Ïî
-                 (OS_ERR 	* )&err);				//´æ·Å¸Ãº¯Êý´íÎóÊ±µÄ·µ»ØÖµ
+	OSTaskCreate(  (OS_TCB 	* )&StartTaskTCB,		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¿ï¿½
+								 (CPU_CHAR * )"start task", 		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+                 (OS_TASK_PTR )start_task, 			//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+                 (void		* )0,					//ï¿½ï¿½ï¿½Ý¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä²ï¿½ï¿½ï¿½
+                 (OS_PRIO	  )START_TASK_PRIO,     //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¼ï¿½
+                 (CPU_STK  * )&START_TASK_STK[0],	//ï¿½ï¿½ï¿½ï¿½ï¿½Õ»ï¿½ï¿½ï¿½ï¿½Ö·
+                 (CPU_STK_SIZE)START_STK_SIZE/10,	//ï¿½ï¿½ï¿½ï¿½ï¿½Õ»ï¿½ï¿½ï¿½ï¿½ï¿½Î»
+                 (CPU_STK_SIZE)START_STK_SIZE,		//ï¿½ï¿½ï¿½ï¿½ï¿½Õ»ï¿½ï¿½Ð¡
+                 (OS_MSG_QTY)0,					//ï¿½ï¿½ï¿½ï¿½ï¿½Ú²ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½ï¿½Ü¹ï¿½ï¿½ï¿½ï¿½Õµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½Ä¿,Îª0Ê±ï¿½ï¿½Ö¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
+                 (OS_TICK	  )0,					//ï¿½ï¿½Ê¹ï¿½ï¿½Ê±ï¿½ï¿½Æ¬ï¿½ï¿½×ªÊ±ï¿½ï¿½Ê±ï¿½ï¿½Æ¬ï¿½ï¿½ï¿½È£ï¿½Îª0Ê±ÎªÄ¬ï¿½Ï³ï¿½ï¿½È£ï¿½
+                 (void   	* )0,					//ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½Ä´æ´¢ï¿½ï¿½
+                 (OS_OPT    )OS_OPT_TASK_STK_CHK|OS_OPT_TASK_STK_CLR, //ï¿½ï¿½ï¿½ï¿½Ñ¡ï¿½ï¿½
+                 (OS_ERR 	* )&err);				//ï¿½ï¿½Å¸Ãºï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½Ä·ï¿½ï¿½ï¿½Öµ
 }
 
 void Init_task(void *p_arg){
 		OS_ERR err;
 		p_arg = p_arg;
 	 
-		NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);//ÖÐ¶Ï·Ö×éÅäÖÃ
+		NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);//ï¿½Ð¶Ï·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
   	User_GPIO_Init();
 		
 	
 		time_counter = 0;
-		CAN1_Init();                //CAN×ÜÏßÅäÖÃ
-	  CAN2_Init();                //CAN2×ÜÏßÅäÖÃ
-		TX2_USART3_Init();       //TX2Í¨ÐÅ
+		CAN1_Init();                //CANï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	  CAN2_Init();                //CAN2ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		TX2_USART3_Init();       //TX2Í¨ï¿½ï¿½
 		
-//	  USART6_init(); //³õÊ¼»¯´®¿Ú6
-//		uart8_init(); //³õÊ¼»¯´®¿Ú8
+//	  USART6_init(); //ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½6
+//		uart8_init(); //ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½8
 
 
 		
@@ -223,7 +225,7 @@ void Init_task(void *p_arg){
 	  TIM8_PWM_Init();
 //		//Heat_PWM_Init();
 
-		// snake_motorsÊ¹ÄÜºÍ²ÎÊýÉè¶¨
+		// snake_motorsÊ¹ï¿½ÜºÍ²ï¿½ï¿½ï¿½ï¿½è¶¨
 		for(uint8_t i=0;i<12;i++){
 			uint8_t can_id = i+1;
 			motorEnable(can_id,0x06,0x01,0x10,0x00,0x00,0x00,0x01);
@@ -240,18 +242,20 @@ void Init_task(void *p_arg){
 
 		
 		
-		// ³õÊ¼»¯GM6020 pid¿ØÖÆµÄËùÓÃµÄµ±Ç°Î»ÖÃ²ÎÊý
-		GM6020_last_raw_position = GripperMotor_205_t.position;  // ÉÏÒ»´ÎµÄÔ­Ê¼Î»ÖÃ£¨0-8191£©
-		GM6020_current_raw_position = GripperMotor_205_t.position;  // µ±Ç°µÄÔ­Ê¼Î»ÖÃ£¨0-8191£©
-		gripper_gm6020_position_control = GM6020_last_raw_position; // È¥³ýÉÏµçºóµÄ¶¶¶¯
-		// ³õÊ¼»¯C610 pid¿ØÖÆµÄËùÓÃµÄµ±Ç°Î»ÖÃ²ÎÊý
-		C610_last_raw_position = GripperMotor_201_t.position;  // ÉÏÒ»´ÎµÄÔ­Ê¼Î»ÖÃ£¨0-8191£©
-		C610_current_raw_position = GripperMotor_201_t.position;  // µ±Ç°µÄÔ­Ê¼Î»ÖÃ£¨0-8191£©
+		// ï¿½ï¿½Ê¼ï¿½ï¿½GM6020 pidï¿½ï¿½ï¿½Æµï¿½ï¿½ï¿½ï¿½ÃµÄµï¿½Ç°Î»ï¿½Ã²ï¿½ï¿½ï¿½
+		GM6020_last_raw_position = GripperMotor_205_t.position;  // ï¿½ï¿½Ò»ï¿½Îµï¿½Ô­Ê¼Î»ï¿½Ã£ï¿½0-8191ï¿½ï¿½
+		GM6020_current_raw_position = GripperMotor_205_t.position;  // ï¿½ï¿½Ç°ï¿½ï¿½Ô­Ê¼Î»ï¿½Ã£ï¿½0-8191ï¿½ï¿½
+		gripper_gm6020_position_control = GM6020_last_raw_position; // È¥ï¿½ï¿½ï¿½Ïµï¿½ï¿½Ä¶ï¿½ï¿½ï¿½
+		// ï¿½ï¿½Ê¼ï¿½ï¿½C610 pidï¿½ï¿½ï¿½Æµï¿½ï¿½ï¿½ï¿½ÃµÄµï¿½Ç°Î»ï¿½Ã²ï¿½ï¿½ï¿½
+		C610_last_raw_position = GripperMotor_201_t.position;  // ï¿½ï¿½Ò»ï¿½Îµï¿½Ô­Ê¼Î»ï¿½Ã£ï¿½0-8191ï¿½ï¿½
+		C610_current_raw_position = GripperMotor_201_t.position;  // ï¿½ï¿½Ç°ï¿½ï¿½Ô­Ê¼Î»ï¿½Ã£ï¿½0-8191ï¿½ï¿½
   	
 	
 
+#if EN_CHASIS_TASK
 		OS_TaskResume((OS_TCB*)&CHASISTaskTCB,&err);
-	  OS_TaskResume((OS_TCB*)&GIMBALTaskTCB,&err);     //ÔÆÌ¨
+#endif
+	  OS_TaskResume((OS_TCB*)&GIMBALTaskTCB,&err);     //Ì¨
 //		OS_TaskResume((OS_TCB*)&GUNTaskTCB,&err);
 //		OS_TaskResume((OS_TCB*)&TIMETaskTCB,&err);
 // 

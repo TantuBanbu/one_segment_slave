@@ -1,23 +1,23 @@
-#ifndef __UART8_H
-#define __UART8_H	 
+#ifndef __UART7_H
+#define __UART7_H	 
 #include "sys.h"  
 #include "stdio.h"
 
 #include <stdint.h>
 #include <stdbool.h>
 
-#define UART8_MAX_RECV_LEN		256				//最大接收缓存字节数
-#define UART8_MAX_SEND_LEN		256				//最大发送缓存字节数
-#define UART8_RX_EN 			1				      //0,不接收;1,接收.
+#define UART7_MAX_RECV_LEN		256				//最大接收缓存字节数
+#define UART7_MAX_SEND_LEN		256				//最大发送缓存字节数
+#define UART7_RX_EN 			1				      //0,不接收;1,接收.
 
-extern u8  UART8_RX_BUF[UART8_MAX_RECV_LEN]; 		
-extern u8  UART8_TX_BUF[UART8_MAX_SEND_LEN]; 		
-extern vu16 UART8_RX_STA;   		//接收数据状态
+extern u8  UART7_RX_BUF[UART7_MAX_RECV_LEN]; 		
+extern u8  UART7_TX_BUF[UART7_MAX_SEND_LEN]; 		
+extern vu16 UART7_RX_STA;   		//接收数据状态
 
 
-void UART8_init(void);
+void UART7_init(void);
 void DATA_IMU(u8 Res);
-void UART8_Send(unsigned char *DataToSend ,u8 data_num);
+void UART7_Send(unsigned char *DataToSend ,u8 data_num);
 
 
 int imu_data_decode_init(void);

@@ -360,19 +360,22 @@ void TX2_Send_Motor_IMU_Data(void)
 {
     uint8_t tx_buffer[256]; // 发送缓冲区
     uint16_t tx_index = 0;  // 发送缓冲区索引
-    uint16_t data_length = 0; // 数据长度
     uint16_t crc16; // CRC16校验值
     float temp_eular[3]; // 临时存储欧拉角数据
     
-    // 1. 添加帧头 0xAA 0x55
+    // 1. 添加帧头 (0xAA 0x55)
     tx_buffer[tx_index++] = 0xAA;
     tx_buffer[tx_index++] = 0x55;
+
+    // 2. 添加Chasis_task风格的头信息
+    tx_buffer[tx_index++] = 0x01;       // Device ID
+    tx_buffer[tx_index++] = 0x6E;       // New Data Length (FuncCode(1) + Count(1) + Payload(108) = 110 = 0x6E)
+    tx_buffer[tx_index++] = 0x41;       // Function Code
+    tx_buffer[tx_index++] = 0x10;       // Item Count (12 motors + 4 IMUs = 16 = 0x10)
+
+    // Payload 从 tx_index = 6 开始
     
-    // 2. 数据长度位置先预留，等计算完毕后再填充
-    uint8_t length_index = tx_index; // 记录长度字段的位置
-    tx_index++; // 跳过长度字段
-    
-    // 3. 添加12个电机的位置数据 (48字节)
+    // 3. 添加12个电机的位置数据 (48字节) - 大端格式
     for (int i = 0; i < 12; i++) {
         // 将整型转为4字节数据添加到缓冲区
         tx_buffer[tx_index++] = (currentPosition_snake[i] >> 24) & 0xFF;
@@ -387,12 +390,11 @@ void TX2_Send_Motor_IMU_Data(void)
         tx_buffer[tx_index++] = currentSpeed_snake[i] & 0xFF;
     }
     
-    // 6. 添加4个IMU的欧拉角数据 (4*3*4=48字节)
+    // 5. 添加4个IMU的欧拉角数据 (4*3*4=48字节) - 小端格式
     // USART2 IMU数据 - 使用get_eular2获取
     get_eular2(temp_eular);
     for (int i = 0; i < 3; i++) {
         uint8_t *p = (uint8_t*)&temp_eular[i]; // 将浮点数转为4字节
-        
         tx_buffer[tx_index++] = p[0];
         tx_buffer[tx_index++] = p[1];
         tx_buffer[tx_index++] = p[2];
@@ -403,7 +405,6 @@ void TX2_Send_Motor_IMU_Data(void)
     get_eular7(temp_eular);
     for (int i = 0; i < 3; i++) {
         uint8_t *p = (uint8_t*)&temp_eular[i]; // 将浮点数转为4字节
-        
         tx_buffer[tx_index++] = p[0];
         tx_buffer[tx_index++] = p[1];
         tx_buffer[tx_index++] = p[2];
@@ -414,7 +415,6 @@ void TX2_Send_Motor_IMU_Data(void)
     get_eular8(temp_eular);
     for (int i = 0; i < 3; i++) {
         uint8_t *p = (uint8_t*)&temp_eular[i]; // 将浮点数转为4字节
-        
         tx_buffer[tx_index++] = p[0];
         tx_buffer[tx_index++] = p[1];
         tx_buffer[tx_index++] = p[2];
@@ -425,38 +425,21 @@ void TX2_Send_Motor_IMU_Data(void)
     get_eular6(temp_eular);
     for (int i = 0; i < 3; i++) {
         uint8_t *p = (uint8_t*)&temp_eular[i]; // 将浮点数转为4字节
-        
         tx_buffer[tx_index++] = p[0];
         tx_buffer[tx_index++] = p[1];
         tx_buffer[tx_index++] = p[2];
         tx_buffer[tx_index++] = p[3];
     }
     
-    // 7. 计算数据长度并填充到之前预留的位置
-    data_length = tx_index - length_index - 1; // 减去帧头和长度字段本身
-    tx_buffer[length_index] = data_length;
-    
-    // 8. 计算CRC16校验值并添加到缓冲区末尾
-    crc16 = calc_crc16_modbus(tx_buffer, tx_index);
+    // 6. 计算CRC16校验值并添加到缓冲区末尾
+    // tx_index 现在指向CRC应该开始的位置 (当前总字节数: 2+1+1+1+1+108 = 114)
+    crc16 = calc_crc16_modbus(tx_buffer, tx_index); // 计算范围包括所有已添加的字节
     tx_buffer[tx_index++] = (crc16 >> 8) & 0xFF; // CRC高字节
     tx_buffer[tx_index++] = crc16 & 0xFF;        // CRC低字节
     
-    // 9. 通过USART3发送整个数据包
+    // 7. 通过USART3发送整个数据包 (总长度现在是 116 字节)
     for (uint16_t i = 0; i < tx_index; i++) {
         USART_SendData(USART3, tx_buffer[i]);
         while(USART_GetFlagStatus(USART3, USART_FLAG_TXE) == RESET); // 等待发送完成
     }
 }
-
-
-
-
-
-
-////时2的回调函数
-//void tmr2_callback(void *p_tmr, void *p_arg)
-//{
-////			flag_get_pos=0;  //û接收数据为0
-////      again_spin=0;
-////	    time_again_flag=1;  
-//}

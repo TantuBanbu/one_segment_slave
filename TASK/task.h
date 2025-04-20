@@ -14,7 +14,7 @@ void Init_task(void *p_arg);
 extern OS_TMR tmr1;  
 
 /*************Chasis task*************/
-#define EN_CHASIS_TASK 1u
+#define EN_CHASIS_TASK 0u
 void goahead(void);
 void off(void);
 void goback(void);
@@ -129,5 +129,5 @@ void Gimbal_min_task(void *p_arg);
 #define EN_TIME_TASK 1u
 void Time_task(void *p_arg);
 
-/*************************��β************************************/
+/*************************β************************************/
 #endif
