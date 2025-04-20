@@ -19,7 +19,7 @@
 //extern u8 flag_get_pos;
 
 // 定义数据发送周期(ms)
-#define MOTOR_IMU_DATA_SEND_PERIOD 50
+#define MOTOR_IMU_DATA_SEND_PERIOD 17
 
 /**
  * @brief 时间相关任务
