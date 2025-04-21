@@ -29,7 +29,7 @@ I (..\STM32\FWLIB\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dcmi.h)(0x657422C8)
 I (..\STM32\FWLIB\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dma2d.h)(0x657422C8)
 I (..\STM32\FWLIB\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_fmc.h)(0x657422C8)
 I (..\STM32\FWLIB\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_sai.h)(0x657422C8)
-I (..\TASK\task.h)(0x6804F5A9)
+I (..\TASK\task.h)(0x6805F7D9)
 I (..\UCOS-III\uCOS_CONFIG\includes.h)(0x657422C8)
 I (D:\LenovoSoftstore\KEIK5MDK\ARM\ARMCC\include\stdio.h)(0x5E53505C)
 I (D:\LenovoSoftstore\KEIK5MDK\ARM\ARMCC\include\string.h)(0x5E53505C)
@@ -53,11 +53,11 @@ I (..\UCOS-III\uCOS-III\Ports\ARM-Cortex-M4\Generic\RealView\os_cpu.h)(0x657422C
 I (..\UCOS-III\uC-LIB\lib_math.h)(0x657422C8)
 I (..\UCOS-III\uCOS_CONFIG\app_cfg.h)(0x657422C8)
 I (..\UCOS-III\UCOS_BSP\bsp.h)(0x657422C8)
-I (..\HARDWARE\usart69050.h)(0x67F910BC)
+I (..\HARDWARE\usart69050.h)(0x6805F50E)
 I (D:\LenovoSoftstore\KEIK5MDK\ARM\ARMCC\include\stdbool.h)(0x5E53505C)
-I (..\HARDWARE\usart2.h)(0x6800E861)
-I (..\HARDWARE\usart7.h)(0x6804F609)
-I (..\HARDWARE\usart8.h)(0x6800C7C9)
+I (..\HARDWARE\usart2.h)(0x6805F7E0)
+I (..\HARDWARE\usart7.h)(0x6805F4C5)
+I (..\HARDWARE\usart8.h)(0x6805F4EC)
 F (.\stm32f4xx_it.c)(0x67F79A32)(--c99 -c --cpu Cortex-M4.fp.sp -g -O0 --apcs=interwork --split_sections -I ..\USER -I ..\UCOS-III\uC-CPU -I ..\UCOS-III\uC-LIB -I ..\UCOS-III\uCOS-III -I ..\UCOS-III\UCOS_BSP -I ..\UCOS-III\uCOS_CONFIG -I ..\UCOS-III\uCOS-III\Source -I ..\UCOS-III\uC-CPU\ARM-Cortex-M4\RealView -I ..\UCOS-III\uC-LIB\Ports\ARM-Cortex-M4\RealView -I ..\UCOS-III\uCOS-III\Ports\ARM-Cortex-M4\Generic\RealView -I ..\HARDWARE -I ..\STM32\CORE -I ..\STM32\FWLIB\STM32F4xx_StdPeriph_Driver\inc -I ..\TASK -I ..\DSP-LIB -I ..\DSP-LIB\inc -I ..\HARDWARE\mpu6050_42mm-I.\RTE\_Template-ID:\LenovoSoftstore\KEIK5MDK\Arm\Packs\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-ID:\LenovoSoftstore\KEIK5MDK\ARM\CMSIS\Include-D__UVISION_VERSION="530" -DSTM32F427xx -D_RTE_ -DSTM32F427_437xx -DUSE_STDPERIPH_DRIVER -D__FPU_USED="1" -D__FPU_PRESENT -DARM_MATH_CM4 -D__CC_ARM -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING-o .\objects\stm32f4xx_it.o --omf_browse .\objects\stm32f4xx_it.crf --depend .\objects\stm32f4xx_it.d)
 I (stm32f4xx_it.h)(0x657422C8)
 I (stm32f4xx.h)(0x657422C8)
@@ -144,7 +144,7 @@ I (..\STM32\FWLIB\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dma2d.h)(0x657422C8)
 I (..\STM32\FWLIB\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_fmc.h)(0x657422C8)
 I (..\STM32\FWLIB\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_sai.h)(0x657422C8)
 I (..\HARDWARE\can2.h)(0x657422C8)
-I (..\TASK\task.h)(0x6804F5A9)
+I (..\TASK\task.h)(0x6805F7D9)
 I (..\HARDWARE\sys.h)(0x657422C8)
 I (..\UCOS-III\uCOS_CONFIG\includes.h)(0x657422C8)
 I (D:\LenovoSoftstore\KEIK5MDK\ARM\ARMCC\include\stdio.h)(0x5E53505C)
@@ -171,11 +171,11 @@ I (..\UCOS-III\uCOS_CONFIG\app_cfg.h)(0x657422C8)
 I (..\UCOS-III\UCOS_BSP\bsp.h)(0x657422C8)
 I (..\HARDWARE\delay.h)(0x657422C8)
 I (..\HARDWARE\pstwo.h)(0x657422C8)
-I (..\HARDWARE\uart3.h)(0x6804A946)
+I (..\HARDWARE\uart3.h)(0x6805EEEF)
 I (..\HARDWARE\pwm.h)(0x657422C8)
 I (..\HARDWARE\imu.h)(0x657422C8)
 I (..\HARDWARE\gpio.h)(0x657422C8)
-F (..\TASK\chasis_task.c)(0x6804F538)(--c99 -c --cpu Cortex-M4.fp.sp -g -O0 --apcs=interwork --split_sections -I ..\USER -I ..\UCOS-III\uC-CPU -I ..\UCOS-III\uC-LIB -I ..\UCOS-III\uCOS-III -I ..\UCOS-III\UCOS_BSP -I ..\UCOS-III\uCOS_CONFIG -I ..\UCOS-III\uCOS-III\Source -I ..\UCOS-III\uC-CPU\ARM-Cortex-M4\RealView -I ..\UCOS-III\uC-LIB\Ports\ARM-Cortex-M4\RealView -I ..\UCOS-III\uCOS-III\Ports\ARM-Cortex-M4\Generic\RealView -I ..\HARDWARE -I ..\STM32\CORE -I ..\STM32\FWLIB\STM32F4xx_StdPeriph_Driver\inc -I ..\TASK -I ..\DSP-LIB -I ..\DSP-LIB\inc -I ..\HARDWARE\mpu6050_42mm-I.\RTE\_Template-ID:\LenovoSoftstore\KEIK5MDK\Arm\Packs\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-ID:\LenovoSoftstore\KEIK5MDK\ARM\CMSIS\Include-D__UVISION_VERSION="530" -DSTM32F427xx -D_RTE_ -DSTM32F427_437xx -DUSE_STDPERIPH_DRIVER -D__FPU_USED="1" -D__FPU_PRESENT -DARM_MATH_CM4 -D__CC_ARM -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING-o .\objects\chasis_task.o --omf_browse .\objects\chasis_task.crf --depend .\objects\chasis_task.d)
+F (..\TASK\chasis_task.c)(0x6805FBB3)(--c99 -c --cpu Cortex-M4.fp.sp -g -O0 --apcs=interwork --split_sections -I ..\USER -I ..\UCOS-III\uC-CPU -I ..\UCOS-III\uC-LIB -I ..\UCOS-III\uCOS-III -I ..\UCOS-III\UCOS_BSP -I ..\UCOS-III\uCOS_CONFIG -I ..\UCOS-III\uCOS-III\Source -I ..\UCOS-III\uC-CPU\ARM-Cortex-M4\RealView -I ..\UCOS-III\uC-LIB\Ports\ARM-Cortex-M4\RealView -I ..\UCOS-III\uCOS-III\Ports\ARM-Cortex-M4\Generic\RealView -I ..\HARDWARE -I ..\STM32\CORE -I ..\STM32\FWLIB\STM32F4xx_StdPeriph_Driver\inc -I ..\TASK -I ..\DSP-LIB -I ..\DSP-LIB\inc -I ..\HARDWARE\mpu6050_42mm-I.\RTE\_Template-ID:\LenovoSoftstore\KEIK5MDK\Arm\Packs\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-ID:\LenovoSoftstore\KEIK5MDK\ARM\CMSIS\Include-D__UVISION_VERSION="530" -DSTM32F427xx -D_RTE_ -DSTM32F427_437xx -DUSE_STDPERIPH_DRIVER -D__FPU_USED="1" -D__FPU_PRESENT -DARM_MATH_CM4 -D__CC_ARM -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING-o .\objects\chasis_task.o --omf_browse .\objects\chasis_task.crf --depend .\objects\chasis_task.d)
 I (..\HARDWARE\can1.h)(0x657422C8)
 I (..\USER\stm32f4xx.h)(0x657422C8)
 I (..\STM32\CORE\core_cm4.h)(0x657422C8)
@@ -205,8 +205,8 @@ I (..\STM32\FWLIB\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_fmc.h)(0x657422C8)
 I (..\STM32\FWLIB\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_sai.h)(0x657422C8)
 I (..\HARDWARE\can2.h)(0x657422C8)
 I (..\HARDWARE\uart1.h)(0x657422C8)
-I (..\HARDWARE\uart3.h)(0x6804A946)
-I (..\TASK\task.h)(0x6804F5A9)
+I (..\HARDWARE\uart3.h)(0x6805EEEF)
+I (..\TASK\task.h)(0x6805F7D9)
 I (..\HARDWARE\sys.h)(0x657422C8)
 I (..\UCOS-III\uCOS_CONFIG\includes.h)(0x657422C8)
 I (D:\LenovoSoftstore\KEIK5MDK\ARM\ARMCC\include\stdio.h)(0x5E53505C)
@@ -234,6 +234,11 @@ I (..\UCOS-III\UCOS_BSP\bsp.h)(0x657422C8)
 I (..\HARDWARE\delay.h)(0x657422C8)
 I (..\HARDWARE\gpio.h)(0x657422C8)
 I (..\HARDWARE\pwm.h)(0x657422C8)
+I (..\HARDWARE\usart69050.h)(0x6805F50E)
+I (D:\LenovoSoftstore\KEIK5MDK\ARM\ARMCC\include\stdbool.h)(0x5E53505C)
+I (..\HARDWARE\usart2.h)(0x6805F7E0)
+I (..\HARDWARE\usart7.h)(0x6805F4C5)
+I (..\HARDWARE\usart8.h)(0x6805F4EC)
 F (..\TASK\gun_task.c)(0x67F78379)(--c99 -c --cpu Cortex-M4.fp.sp -g -O0 --apcs=interwork --split_sections -I ..\USER -I ..\UCOS-III\uC-CPU -I ..\UCOS-III\uC-LIB -I ..\UCOS-III\uCOS-III -I ..\UCOS-III\UCOS_BSP -I ..\UCOS-III\uCOS_CONFIG -I ..\UCOS-III\uCOS-III\Source -I ..\UCOS-III\uC-CPU\ARM-Cortex-M4\RealView -I ..\UCOS-III\uC-LIB\Ports\ARM-Cortex-M4\RealView -I ..\UCOS-III\uCOS-III\Ports\ARM-Cortex-M4\Generic\RealView -I ..\HARDWARE -I ..\STM32\CORE -I ..\STM32\FWLIB\STM32F4xx_StdPeriph_Driver\inc -I ..\TASK -I ..\DSP-LIB -I ..\DSP-LIB\inc -I ..\HARDWARE\mpu6050_42mm-I.\RTE\_Template-ID:\LenovoSoftstore\KEIK5MDK\Arm\Packs\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-ID:\LenovoSoftstore\KEIK5MDK\ARM\CMSIS\Include-D__UVISION_VERSION="530" -DSTM32F427xx -D_RTE_ -DSTM32F427_437xx -DUSE_STDPERIPH_DRIVER -D__FPU_USED="1" -D__FPU_PRESENT -DARM_MATH_CM4 -D__CC_ARM -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING-o .\objects\gun_task.o --omf_browse .\objects\gun_task.crf --depend .\objects\gun_task.d)
 I (..\HARDWARE\can2.h)(0x657422C8)
 I (..\USER\stm32f4xx.h)(0x657422C8)
@@ -263,7 +268,7 @@ I (..\STM32\FWLIB\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dma2d.h)(0x657422C8)
 I (..\STM32\FWLIB\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_fmc.h)(0x657422C8)
 I (..\STM32\FWLIB\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_sai.h)(0x657422C8)
 I (..\HARDWARE\can1.h)(0x657422C8)
-I (..\TASK\task.h)(0x6804F5A9)
+I (..\TASK\task.h)(0x6805F7D9)
 I (..\HARDWARE\sys.h)(0x657422C8)
 I (..\UCOS-III\uCOS_CONFIG\includes.h)(0x657422C8)
 I (D:\LenovoSoftstore\KEIK5MDK\ARM\ARMCC\include\stdio.h)(0x5E53505C)
@@ -290,7 +295,7 @@ I (..\UCOS-III\uCOS_CONFIG\app_cfg.h)(0x657422C8)
 I (..\UCOS-III\UCOS_BSP\bsp.h)(0x657422C8)
 I (..\HARDWARE\delay.h)(0x657422C8)
 I (..\HARDWARE\uart1.h)(0x657422C8)
-I (..\HARDWARE\uart3.h)(0x6804A946)
+I (..\HARDWARE\uart3.h)(0x6805EEEF)
 I (..\HARDWARE\pwm.h)(0x657422C8)
 I (..\HARDWARE\imu.h)(0x657422C8)
 I (..\HARDWARE\gpio.h)(0x657422C8)
@@ -298,7 +303,7 @@ I (..\HARDWARE\SCServo.h)(0x657422C8)
 I (..\HARDWARE\INST.h)(0x657422C8)
 I (..\HARDWARE\SCS.h)(0x657422C8)
 I (..\HARDWARE\SMS_STS.h)(0x657422C8)
-F (..\TASK\start_task.c)(0x6804F651)(--c99 -c --cpu Cortex-M4.fp.sp -g -O0 --apcs=interwork --split_sections -I ..\USER -I ..\UCOS-III\uC-CPU -I ..\UCOS-III\uC-LIB -I ..\UCOS-III\uCOS-III -I ..\UCOS-III\UCOS_BSP -I ..\UCOS-III\uCOS_CONFIG -I ..\UCOS-III\uCOS-III\Source -I ..\UCOS-III\uC-CPU\ARM-Cortex-M4\RealView -I ..\UCOS-III\uC-LIB\Ports\ARM-Cortex-M4\RealView -I ..\UCOS-III\uCOS-III\Ports\ARM-Cortex-M4\Generic\RealView -I ..\HARDWARE -I ..\STM32\CORE -I ..\STM32\FWLIB\STM32F4xx_StdPeriph_Driver\inc -I ..\TASK -I ..\DSP-LIB -I ..\DSP-LIB\inc -I ..\HARDWARE\mpu6050_42mm-I.\RTE\_Template-ID:\LenovoSoftstore\KEIK5MDK\Arm\Packs\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-ID:\LenovoSoftstore\KEIK5MDK\ARM\CMSIS\Include-D__UVISION_VERSION="530" -DSTM32F427xx -D_RTE_ -DSTM32F427_437xx -DUSE_STDPERIPH_DRIVER -D__FPU_USED="1" -D__FPU_PRESENT -DARM_MATH_CM4 -D__CC_ARM -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING-o .\objects\start_task.o --omf_browse .\objects\start_task.crf --depend .\objects\start_task.d)
+F (..\TASK\start_task.c)(0x6804FD85)(--c99 -c --cpu Cortex-M4.fp.sp -g -O0 --apcs=interwork --split_sections -I ..\USER -I ..\UCOS-III\uC-CPU -I ..\UCOS-III\uC-LIB -I ..\UCOS-III\uCOS-III -I ..\UCOS-III\UCOS_BSP -I ..\UCOS-III\uCOS_CONFIG -I ..\UCOS-III\uCOS-III\Source -I ..\UCOS-III\uC-CPU\ARM-Cortex-M4\RealView -I ..\UCOS-III\uC-LIB\Ports\ARM-Cortex-M4\RealView -I ..\UCOS-III\uCOS-III\Ports\ARM-Cortex-M4\Generic\RealView -I ..\HARDWARE -I ..\STM32\CORE -I ..\STM32\FWLIB\STM32F4xx_StdPeriph_Driver\inc -I ..\TASK -I ..\DSP-LIB -I ..\DSP-LIB\inc -I ..\HARDWARE\mpu6050_42mm-I.\RTE\_Template-ID:\LenovoSoftstore\KEIK5MDK\Arm\Packs\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-ID:\LenovoSoftstore\KEIK5MDK\ARM\CMSIS\Include-D__UVISION_VERSION="530" -DSTM32F427xx -D_RTE_ -DSTM32F427_437xx -DUSE_STDPERIPH_DRIVER -D__FPU_USED="1" -D__FPU_PRESENT -DARM_MATH_CM4 -D__CC_ARM -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING-o .\objects\start_task.o --omf_browse .\objects\start_task.crf --depend .\objects\start_task.d)
 I (..\HARDWARE\can1.h)(0x657422C8)
 I (..\USER\stm32f4xx.h)(0x657422C8)
 I (..\STM32\CORE\core_cm4.h)(0x657422C8)
@@ -327,7 +332,7 @@ I (..\STM32\FWLIB\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dma2d.h)(0x657422C8)
 I (..\STM32\FWLIB\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_fmc.h)(0x657422C8)
 I (..\STM32\FWLIB\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_sai.h)(0x657422C8)
 I (..\HARDWARE\can2.h)(0x657422C8)
-I (..\TASK\task.h)(0x6804F5A9)
+I (..\TASK\task.h)(0x6805F7D9)
 I (..\HARDWARE\sys.h)(0x657422C8)
 I (..\UCOS-III\uCOS_CONFIG\includes.h)(0x657422C8)
 I (D:\LenovoSoftstore\KEIK5MDK\ARM\ARMCC\include\stdio.h)(0x5E53505C)
@@ -354,14 +359,14 @@ I (..\UCOS-III\uCOS_CONFIG\app_cfg.h)(0x657422C8)
 I (..\UCOS-III\UCOS_BSP\bsp.h)(0x657422C8)
 I (..\HARDWARE\delay.h)(0x657422C8)
 I (..\HARDWARE\uart1.h)(0x657422C8)
-I (..\HARDWARE\uart3.h)(0x6804A946)
+I (..\HARDWARE\uart3.h)(0x6805EEEF)
 I (..\HARDWARE\pwm.h)(0x657422C8)
 I (..\HARDWARE\gpio.h)(0x657422C8)
 I (..\HARDWARE\pstwo.h)(0x657422C8)
-I (..\HARDWARE\usart69050.h)(0x67F910BC)
+I (..\HARDWARE\usart69050.h)(0x6805F50E)
 I (D:\LenovoSoftstore\KEIK5MDK\ARM\ARMCC\include\stdbool.h)(0x5E53505C)
-F (..\TASK\task.h)(0x6804F5A9)()
-F (..\TASK\time_task.c)(0x6804DD79)(--c99 -c --cpu Cortex-M4.fp.sp -g -O0 --apcs=interwork --split_sections -I ..\USER -I ..\UCOS-III\uC-CPU -I ..\UCOS-III\uC-LIB -I ..\UCOS-III\uCOS-III -I ..\UCOS-III\UCOS_BSP -I ..\UCOS-III\uCOS_CONFIG -I ..\UCOS-III\uCOS-III\Source -I ..\UCOS-III\uC-CPU\ARM-Cortex-M4\RealView -I ..\UCOS-III\uC-LIB\Ports\ARM-Cortex-M4\RealView -I ..\UCOS-III\uCOS-III\Ports\ARM-Cortex-M4\Generic\RealView -I ..\HARDWARE -I ..\STM32\CORE -I ..\STM32\FWLIB\STM32F4xx_StdPeriph_Driver\inc -I ..\TASK -I ..\DSP-LIB -I ..\DSP-LIB\inc -I ..\HARDWARE\mpu6050_42mm-I.\RTE\_Template-ID:\LenovoSoftstore\KEIK5MDK\Arm\Packs\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-ID:\LenovoSoftstore\KEIK5MDK\ARM\CMSIS\Include-D__UVISION_VERSION="530" -DSTM32F427xx -D_RTE_ -DSTM32F427_437xx -DUSE_STDPERIPH_DRIVER -D__FPU_USED="1" -D__FPU_PRESENT -DARM_MATH_CM4 -D__CC_ARM -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING-o .\objects\time_task.o --omf_browse .\objects\time_task.crf --depend .\objects\time_task.d)
+F (..\TASK\task.h)(0x6805F7D9)()
+F (..\TASK\time_task.c)(0x6805ECA9)(--c99 -c --cpu Cortex-M4.fp.sp -g -O0 --apcs=interwork --split_sections -I ..\USER -I ..\UCOS-III\uC-CPU -I ..\UCOS-III\uC-LIB -I ..\UCOS-III\uCOS-III -I ..\UCOS-III\UCOS_BSP -I ..\UCOS-III\uCOS_CONFIG -I ..\UCOS-III\uCOS-III\Source -I ..\UCOS-III\uC-CPU\ARM-Cortex-M4\RealView -I ..\UCOS-III\uC-LIB\Ports\ARM-Cortex-M4\RealView -I ..\UCOS-III\uCOS-III\Ports\ARM-Cortex-M4\Generic\RealView -I ..\HARDWARE -I ..\STM32\CORE -I ..\STM32\FWLIB\STM32F4xx_StdPeriph_Driver\inc -I ..\TASK -I ..\DSP-LIB -I ..\DSP-LIB\inc -I ..\HARDWARE\mpu6050_42mm-I.\RTE\_Template-ID:\LenovoSoftstore\KEIK5MDK\Arm\Packs\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-ID:\LenovoSoftstore\KEIK5MDK\ARM\CMSIS\Include-D__UVISION_VERSION="530" -DSTM32F427xx -D_RTE_ -DSTM32F427_437xx -DUSE_STDPERIPH_DRIVER -D__FPU_USED="1" -D__FPU_PRESENT -DARM_MATH_CM4 -D__CC_ARM -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING-o .\objects\time_task.o --omf_browse .\objects\time_task.crf --depend .\objects\time_task.d)
 I (..\HARDWARE\can1.h)(0x657422C8)
 I (..\USER\stm32f4xx.h)(0x657422C8)
 I (..\STM32\CORE\core_cm4.h)(0x657422C8)
@@ -389,7 +394,7 @@ I (..\STM32\FWLIB\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dcmi.h)(0x657422C8)
 I (..\STM32\FWLIB\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dma2d.h)(0x657422C8)
 I (..\STM32\FWLIB\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_fmc.h)(0x657422C8)
 I (..\STM32\FWLIB\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_sai.h)(0x657422C8)
-I (..\TASK\task.h)(0x6804F5A9)
+I (..\TASK\task.h)(0x6805F7D9)
 I (..\HARDWARE\sys.h)(0x657422C8)
 I (..\UCOS-III\uCOS_CONFIG\includes.h)(0x657422C8)
 I (D:\LenovoSoftstore\KEIK5MDK\ARM\ARMCC\include\stdio.h)(0x5E53505C)
@@ -415,7 +420,7 @@ I (..\UCOS-III\uC-LIB\lib_math.h)(0x657422C8)
 I (..\UCOS-III\uCOS_CONFIG\app_cfg.h)(0x657422C8)
 I (..\UCOS-III\UCOS_BSP\bsp.h)(0x657422C8)
 I (..\HARDWARE\delay.h)(0x657422C8)
-I (..\HARDWARE\uart3.h)(0x6804A946)
+I (..\HARDWARE\uart3.h)(0x6805EEEF)
 F (..\STM32\CORE\core_cm4.h)(0x657422C8)()
 F (..\STM32\CORE\core_cm4_simd.h)(0x657422C8)()
 F (..\STM32\CORE\startup_stm32f427xx.s)(0x657422C8)(--cpu Cortex-M4.fp.sp -g --apcs=interwork -I.\RTE\_Template-ID:\LenovoSoftstore\KEIK5MDK\Arm\Packs\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-ID:\LenovoSoftstore\KEIK5MDK\ARM\CMSIS\Include--pd "__UVISION_VERSION SETA 530" --pd "STM32F427xx SETA 1" --pd "_RTE_ SETA 1"--list .\listings\startup_stm32f427xx.lst --xref -o .\objects\startup_stm32f427xx.o --depend .\objects\startup_stm32f427xx.d)
@@ -1538,7 +1543,7 @@ I (..\UCOS-III\uC-LIB\lib_math.h)(0x657422C8)
 I (..\UCOS-III\uCOS_CONFIG\app_cfg.h)(0x657422C8)
 I (..\UCOS-III\UCOS_BSP\bsp.h)(0x657422C8)
 I (..\HARDWARE\can1.h)(0x657422C8)
-I (..\TASK\task.h)(0x6804F5A9)
+I (..\TASK\task.h)(0x6805F7D9)
 I (..\HARDWARE\sys.h)(0x657422C8)
 F (..\HARDWARE\gpio.c)(0x657422C8)(--c99 -c --cpu Cortex-M4.fp.sp -g -O0 --apcs=interwork --split_sections -I ..\USER -I ..\UCOS-III\uC-CPU -I ..\UCOS-III\uC-LIB -I ..\UCOS-III\uCOS-III -I ..\UCOS-III\UCOS_BSP -I ..\UCOS-III\uCOS_CONFIG -I ..\UCOS-III\uCOS-III\Source -I ..\UCOS-III\uC-CPU\ARM-Cortex-M4\RealView -I ..\UCOS-III\uC-LIB\Ports\ARM-Cortex-M4\RealView -I ..\UCOS-III\uCOS-III\Ports\ARM-Cortex-M4\Generic\RealView -I ..\HARDWARE -I ..\STM32\CORE -I ..\STM32\FWLIB\STM32F4xx_StdPeriph_Driver\inc -I ..\TASK -I ..\DSP-LIB -I ..\DSP-LIB\inc -I ..\HARDWARE\mpu6050_42mm-I.\RTE\_Template-ID:\LenovoSoftstore\KEIK5MDK\Arm\Packs\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-ID:\LenovoSoftstore\KEIK5MDK\ARM\CMSIS\Include-D__UVISION_VERSION="530" -DSTM32F427xx -D_RTE_ -DSTM32F427_437xx -DUSE_STDPERIPH_DRIVER -D__FPU_USED="1" -D__FPU_PRESENT -DARM_MATH_CM4 -D__CC_ARM -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING-o .\objects\gpio.o --omf_browse .\objects\gpio.crf --depend .\objects\gpio.d)
 I (..\HARDWARE\gpio.h)(0x657422C8)
@@ -1597,7 +1602,7 @@ I (..\STM32\FWLIB\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dcmi.h)(0x657422C8)
 I (..\STM32\FWLIB\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dma2d.h)(0x657422C8)
 I (..\STM32\FWLIB\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_fmc.h)(0x657422C8)
 I (..\STM32\FWLIB\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_sai.h)(0x657422C8)
-I (..\TASK\task.h)(0x6804F5A9)
+I (..\TASK\task.h)(0x6805F7D9)
 I (..\HARDWARE\sys.h)(0x657422C8)
 I (..\UCOS-III\uCOS_CONFIG\includes.h)(0x657422C8)
 I (D:\LenovoSoftstore\KEIK5MDK\ARM\ARMCC\include\stdio.h)(0x5E53505C)
@@ -1623,7 +1628,7 @@ I (..\UCOS-III\uC-LIB\lib_math.h)(0x657422C8)
 I (..\UCOS-III\uCOS_CONFIG\app_cfg.h)(0x657422C8)
 I (..\UCOS-III\UCOS_BSP\bsp.h)(0x657422C8)
 I (..\HARDWARE\delay.h)(0x657422C8)
-I (..\HARDWARE\uart3.h)(0x6804A946)
+I (..\HARDWARE\uart3.h)(0x6805EEEF)
 F (..\HARDWARE\pwm.c)(0x657422C8)(--c99 -c --cpu Cortex-M4.fp.sp -g -O0 --apcs=interwork --split_sections -I ..\USER -I ..\UCOS-III\uC-CPU -I ..\UCOS-III\uC-LIB -I ..\UCOS-III\uCOS-III -I ..\UCOS-III\UCOS_BSP -I ..\UCOS-III\uCOS_CONFIG -I ..\UCOS-III\uCOS-III\Source -I ..\UCOS-III\uC-CPU\ARM-Cortex-M4\RealView -I ..\UCOS-III\uC-LIB\Ports\ARM-Cortex-M4\RealView -I ..\UCOS-III\uCOS-III\Ports\ARM-Cortex-M4\Generic\RealView -I ..\HARDWARE -I ..\STM32\CORE -I ..\STM32\FWLIB\STM32F4xx_StdPeriph_Driver\inc -I ..\TASK -I ..\DSP-LIB -I ..\DSP-LIB\inc -I ..\HARDWARE\mpu6050_42mm-I.\RTE\_Template-ID:\LenovoSoftstore\KEIK5MDK\Arm\Packs\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-ID:\LenovoSoftstore\KEIK5MDK\ARM\CMSIS\Include-D__UVISION_VERSION="530" -DSTM32F427xx -D_RTE_ -DSTM32F427_437xx -DUSE_STDPERIPH_DRIVER -D__FPU_USED="1" -D__FPU_PRESENT -DARM_MATH_CM4 -D__CC_ARM -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING-o .\objects\pwm.o --omf_browse .\objects\pwm.crf --depend .\objects\pwm.d)
 I (..\HARDWARE\pwm.h)(0x657422C8)
 I (..\USER\stm32f4xx.h)(0x657422C8)
@@ -1683,7 +1688,7 @@ I (..\STM32\FWLIB\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dma2d.h)(0x657422C8)
 I (..\STM32\FWLIB\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_fmc.h)(0x657422C8)
 I (..\STM32\FWLIB\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_sai.h)(0x657422C8)
 I (..\HARDWARE\can1.h)(0x657422C8)
-I (..\TASK\task.h)(0x6804F5A9)
+I (..\TASK\task.h)(0x6805F7D9)
 I (..\HARDWARE\sys.h)(0x657422C8)
 I (..\UCOS-III\uCOS_CONFIG\includes.h)(0x657422C8)
 I (D:\LenovoSoftstore\KEIK5MDK\ARM\ARMCC\include\stdio.h)(0x5E53505C)
@@ -1709,7 +1714,7 @@ I (..\UCOS-III\uC-LIB\lib_math.h)(0x657422C8)
 I (..\UCOS-III\uCOS_CONFIG\app_cfg.h)(0x657422C8)
 I (..\UCOS-III\UCOS_BSP\bsp.h)(0x657422C8)
 I (..\HARDWARE\delay.h)(0x657422C8)
-F (..\HARDWARE\uart3.c)(0x6804F7BB)(--c99 -c --cpu Cortex-M4.fp.sp -g -O0 --apcs=interwork --split_sections -I ..\USER -I ..\UCOS-III\uC-CPU -I ..\UCOS-III\uC-LIB -I ..\UCOS-III\uCOS-III -I ..\UCOS-III\UCOS_BSP -I ..\UCOS-III\uCOS_CONFIG -I ..\UCOS-III\uCOS-III\Source -I ..\UCOS-III\uC-CPU\ARM-Cortex-M4\RealView -I ..\UCOS-III\uC-LIB\Ports\ARM-Cortex-M4\RealView -I ..\UCOS-III\uCOS-III\Ports\ARM-Cortex-M4\Generic\RealView -I ..\HARDWARE -I ..\STM32\CORE -I ..\STM32\FWLIB\STM32F4xx_StdPeriph_Driver\inc -I ..\TASK -I ..\DSP-LIB -I ..\DSP-LIB\inc -I ..\HARDWARE\mpu6050_42mm-I.\RTE\_Template-ID:\LenovoSoftstore\KEIK5MDK\Arm\Packs\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-ID:\LenovoSoftstore\KEIK5MDK\ARM\CMSIS\Include-D__UVISION_VERSION="530" -DSTM32F427xx -D_RTE_ -DSTM32F427_437xx -DUSE_STDPERIPH_DRIVER -D__FPU_USED="1" -D__FPU_PRESENT -DARM_MATH_CM4 -D__CC_ARM -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING-o .\objects\uart3.o --omf_browse .\objects\uart3.crf --depend .\objects\uart3.d)
+F (..\HARDWARE\uart3.c)(0x6805FC29)(--c99 -c --cpu Cortex-M4.fp.sp -g -O0 --apcs=interwork --split_sections -I ..\USER -I ..\UCOS-III\uC-CPU -I ..\UCOS-III\uC-LIB -I ..\UCOS-III\uCOS-III -I ..\UCOS-III\UCOS_BSP -I ..\UCOS-III\uCOS_CONFIG -I ..\UCOS-III\uCOS-III\Source -I ..\UCOS-III\uC-CPU\ARM-Cortex-M4\RealView -I ..\UCOS-III\uC-LIB\Ports\ARM-Cortex-M4\RealView -I ..\UCOS-III\uCOS-III\Ports\ARM-Cortex-M4\Generic\RealView -I ..\HARDWARE -I ..\STM32\CORE -I ..\STM32\FWLIB\STM32F4xx_StdPeriph_Driver\inc -I ..\TASK -I ..\DSP-LIB -I ..\DSP-LIB\inc -I ..\HARDWARE\mpu6050_42mm-I.\RTE\_Template-ID:\LenovoSoftstore\KEIK5MDK\Arm\Packs\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-ID:\LenovoSoftstore\KEIK5MDK\ARM\CMSIS\Include-D__UVISION_VERSION="530" -DSTM32F427xx -D_RTE_ -DSTM32F427_437xx -DUSE_STDPERIPH_DRIVER -D__FPU_USED="1" -D__FPU_PRESENT -DARM_MATH_CM4 -D__CC_ARM -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING-o .\objects\uart3.o --omf_browse .\objects\uart3.crf --depend .\objects\uart3.d)
 I (..\HARDWARE\can1.h)(0x657422C8)
 I (..\USER\stm32f4xx.h)(0x657422C8)
 I (..\STM32\CORE\core_cm4.h)(0x657422C8)
@@ -1737,7 +1742,7 @@ I (..\STM32\FWLIB\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dcmi.h)(0x657422C8)
 I (..\STM32\FWLIB\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dma2d.h)(0x657422C8)
 I (..\STM32\FWLIB\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_fmc.h)(0x657422C8)
 I (..\STM32\FWLIB\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_sai.h)(0x657422C8)
-I (..\TASK\task.h)(0x6804F5A9)
+I (..\TASK\task.h)(0x6805F7D9)
 I (..\HARDWARE\sys.h)(0x657422C8)
 I (..\UCOS-III\uCOS_CONFIG\includes.h)(0x657422C8)
 I (D:\LenovoSoftstore\KEIK5MDK\ARM\ARMCC\include\stdio.h)(0x5E53505C)
@@ -1764,15 +1769,15 @@ I (..\UCOS-III\uCOS_CONFIG\app_cfg.h)(0x657422C8)
 I (..\UCOS-III\UCOS_BSP\bsp.h)(0x657422C8)
 I (..\HARDWARE\delay.h)(0x657422C8)
 I (..\HARDWARE\uart1.h)(0x657422C8)
-I (..\HARDWARE\uart3.h)(0x6804A946)
+I (..\HARDWARE\uart3.h)(0x6805EEEF)
 I (..\HARDWARE\pwm.h)(0x657422C8)
 I (..\HARDWARE\imu.h)(0x657422C8)
 I (..\HARDWARE\gpio.h)(0x657422C8)
-I (..\HARDWARE\usart69050.h)(0x67F910BC)
+I (..\HARDWARE\usart69050.h)(0x6805F50E)
 I (D:\LenovoSoftstore\KEIK5MDK\ARM\ARMCC\include\stdbool.h)(0x5E53505C)
-I (..\HARDWARE\usart2.h)(0x6800E861)
-I (..\HARDWARE\usart7.h)(0x6804F609)
-I (..\HARDWARE\usart8.h)(0x6800C7C9)
+I (..\HARDWARE\usart2.h)(0x6805F7E0)
+I (..\HARDWARE\usart7.h)(0x6805F4C5)
+I (..\HARDWARE\usart8.h)(0x6805F4EC)
 F (..\HARDWARE\packet.c)(0x657422C8)(--c99 -c --cpu Cortex-M4.fp.sp -g -O0 --apcs=interwork --split_sections -I ..\USER -I ..\UCOS-III\uC-CPU -I ..\UCOS-III\uC-LIB -I ..\UCOS-III\uCOS-III -I ..\UCOS-III\UCOS_BSP -I ..\UCOS-III\uCOS_CONFIG -I ..\UCOS-III\uCOS-III\Source -I ..\UCOS-III\uC-CPU\ARM-Cortex-M4\RealView -I ..\UCOS-III\uC-LIB\Ports\ARM-Cortex-M4\RealView -I ..\UCOS-III\uCOS-III\Ports\ARM-Cortex-M4\Generic\RealView -I ..\HARDWARE -I ..\STM32\CORE -I ..\STM32\FWLIB\STM32F4xx_StdPeriph_Driver\inc -I ..\TASK -I ..\DSP-LIB -I ..\DSP-LIB\inc -I ..\HARDWARE\mpu6050_42mm-I.\RTE\_Template-ID:\LenovoSoftstore\KEIK5MDK\Arm\Packs\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-ID:\LenovoSoftstore\KEIK5MDK\ARM\CMSIS\Include-D__UVISION_VERSION="530" -DSTM32F427xx -D_RTE_ -DSTM32F427_437xx -DUSE_STDPERIPH_DRIVER -D__FPU_USED="1" -D__FPU_PRESENT -DARM_MATH_CM4 -D__CC_ARM -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING-o .\objects\packet.o --omf_browse .\objects\packet.crf --depend .\objects\packet.d)
 I (D:\LenovoSoftstore\KEIK5MDK\ARM\ARMCC\include\string.h)(0x5E53505C)
 I (D:\LenovoSoftstore\KEIK5MDK\ARM\ARMCC\include\stdio.h)(0x5E53505C)
@@ -1860,10 +1865,10 @@ I (..\STM32\FWLIB\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dma2d.h)(0x657422C8)
 I (..\STM32\FWLIB\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_fmc.h)(0x657422C8)
 I (..\STM32\FWLIB\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_sai.h)(0x657422C8)
 I (..\HARDWARE\can2.h)(0x657422C8)
-I (..\TASK\task.h)(0x6804F5A9)
+I (..\TASK\task.h)(0x6805F7D9)
 I (..\HARDWARE\sys.h)(0x657422C8)
 I (..\HARDWARE\uart1.h)(0x657422C8)
-I (..\HARDWARE\uart3.h)(0x6804A946)
+I (..\HARDWARE\uart3.h)(0x6805EEEF)
 F (..\HARDWARE\can1.h)(0x657422C8)()
 F (..\HARDWARE\can2.h)(0x657422C8)()
 F (..\HARDWARE\delay.h)(0x657422C8)()
@@ -1878,9 +1883,9 @@ F (..\HARDWARE\SCServo.h)(0x657422C8)()
 F (..\HARDWARE\SMS_STS.h)(0x657422C8)()
 F (..\HARDWARE\sys.h)(0x657422C8)()
 F (..\HARDWARE\uart1.h)(0x657422C8)()
-F (..\HARDWARE\uart3.h)(0x6804A946)()
+F (..\HARDWARE\uart3.h)(0x6805EEEF)()
 F (.\usart69050.c)(0x68039C79)(--c99 -c --cpu Cortex-M4.fp.sp -g -O0 --apcs=interwork --split_sections -I ..\USER -I ..\UCOS-III\uC-CPU -I ..\UCOS-III\uC-LIB -I ..\UCOS-III\uCOS-III -I ..\UCOS-III\UCOS_BSP -I ..\UCOS-III\uCOS_CONFIG -I ..\UCOS-III\uCOS-III\Source -I ..\UCOS-III\uC-CPU\ARM-Cortex-M4\RealView -I ..\UCOS-III\uC-LIB\Ports\ARM-Cortex-M4\RealView -I ..\UCOS-III\uCOS-III\Ports\ARM-Cortex-M4\Generic\RealView -I ..\HARDWARE -I ..\STM32\CORE -I ..\STM32\FWLIB\STM32F4xx_StdPeriph_Driver\inc -I ..\TASK -I ..\DSP-LIB -I ..\DSP-LIB\inc -I ..\HARDWARE\mpu6050_42mm-I.\RTE\_Template-ID:\LenovoSoftstore\KEIK5MDK\Arm\Packs\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-ID:\LenovoSoftstore\KEIK5MDK\ARM\CMSIS\Include-D__UVISION_VERSION="530" -DSTM32F427xx -D_RTE_ -DSTM32F427_437xx -DUSE_STDPERIPH_DRIVER -D__FPU_USED="1" -D__FPU_PRESENT -DARM_MATH_CM4 -D__CC_ARM -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING-o .\objects\usart69050.o --omf_browse .\objects\usart69050.crf --depend .\objects\usart69050.d)
-I (..\HARDWARE\usart69050.h)(0x67F910BC)
+I (..\HARDWARE\usart69050.h)(0x6805F50E)
 I (..\HARDWARE\sys.h)(0x657422C8)
 I (..\USER\stm32f4xx.h)(0x657422C8)
 I (..\STM32\CORE\core_cm4.h)(0x657422C8)
@@ -1939,7 +1944,7 @@ I (D:\LenovoSoftstore\KEIK5MDK\ARM\ARMCC\include\stdint.h)(0x5E53505C)
 I (D:\LenovoSoftstore\KEIK5MDK\ARM\ARMCC\include\stdio.h)(0x5E53505C)
 I (D:\LenovoSoftstore\KEIK5MDK\ARM\ARMCC\include\string.h)(0x5E53505C)
 F (.\usart2.c)(0x68039CAC)(--c99 -c --cpu Cortex-M4.fp.sp -g -O0 --apcs=interwork --split_sections -I ..\USER -I ..\UCOS-III\uC-CPU -I ..\UCOS-III\uC-LIB -I ..\UCOS-III\uCOS-III -I ..\UCOS-III\UCOS_BSP -I ..\UCOS-III\uCOS_CONFIG -I ..\UCOS-III\uCOS-III\Source -I ..\UCOS-III\uC-CPU\ARM-Cortex-M4\RealView -I ..\UCOS-III\uC-LIB\Ports\ARM-Cortex-M4\RealView -I ..\UCOS-III\uCOS-III\Ports\ARM-Cortex-M4\Generic\RealView -I ..\HARDWARE -I ..\STM32\CORE -I ..\STM32\FWLIB\STM32F4xx_StdPeriph_Driver\inc -I ..\TASK -I ..\DSP-LIB -I ..\DSP-LIB\inc -I ..\HARDWARE\mpu6050_42mm-I.\RTE\_Template-ID:\LenovoSoftstore\KEIK5MDK\Arm\Packs\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-ID:\LenovoSoftstore\KEIK5MDK\ARM\CMSIS\Include-D__UVISION_VERSION="530" -DSTM32F427xx -D_RTE_ -DSTM32F427_437xx -DUSE_STDPERIPH_DRIVER -D__FPU_USED="1" -D__FPU_PRESENT -DARM_MATH_CM4 -D__CC_ARM -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING-o .\objects\usart2.o --omf_browse .\objects\usart2.crf --depend .\objects\usart2.d)
-I (..\HARDWARE\usart2.h)(0x6800E861)
+I (..\HARDWARE\usart2.h)(0x6805F7E0)
 I (..\HARDWARE\sys.h)(0x657422C8)
 I (..\USER\stm32f4xx.h)(0x657422C8)
 I (..\STM32\CORE\core_cm4.h)(0x657422C8)
@@ -1993,7 +1998,7 @@ I (..\UCOS-III\uC-LIB\lib_math.h)(0x657422C8)
 I (..\UCOS-III\uCOS_CONFIG\app_cfg.h)(0x657422C8)
 I (..\UCOS-III\UCOS_BSP\bsp.h)(0x657422C8)
 F (.\usart7.c)(0x6803A019)(--c99 -c --cpu Cortex-M4.fp.sp -g -O0 --apcs=interwork --split_sections -I ..\USER -I ..\UCOS-III\uC-CPU -I ..\UCOS-III\uC-LIB -I ..\UCOS-III\uCOS-III -I ..\UCOS-III\UCOS_BSP -I ..\UCOS-III\uCOS_CONFIG -I ..\UCOS-III\uCOS-III\Source -I ..\UCOS-III\uC-CPU\ARM-Cortex-M4\RealView -I ..\UCOS-III\uC-LIB\Ports\ARM-Cortex-M4\RealView -I ..\UCOS-III\uCOS-III\Ports\ARM-Cortex-M4\Generic\RealView -I ..\HARDWARE -I ..\STM32\CORE -I ..\STM32\FWLIB\STM32F4xx_StdPeriph_Driver\inc -I ..\TASK -I ..\DSP-LIB -I ..\DSP-LIB\inc -I ..\HARDWARE\mpu6050_42mm-I.\RTE\_Template-ID:\LenovoSoftstore\KEIK5MDK\Arm\Packs\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-ID:\LenovoSoftstore\KEIK5MDK\ARM\CMSIS\Include-D__UVISION_VERSION="530" -DSTM32F427xx -D_RTE_ -DSTM32F427_437xx -DUSE_STDPERIPH_DRIVER -D__FPU_USED="1" -D__FPU_PRESENT -DARM_MATH_CM4 -D__CC_ARM -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING-o .\objects\usart7.o --omf_browse .\objects\usart7.crf --depend .\objects\usart7.d)
-I (..\HARDWARE\usart7.h)(0x6804F609)
+I (..\HARDWARE\usart7.h)(0x6805F4C5)
 I (..\HARDWARE\sys.h)(0x657422C8)
 I (..\USER\stm32f4xx.h)(0x657422C8)
 I (..\STM32\CORE\core_cm4.h)(0x657422C8)
@@ -2047,7 +2052,7 @@ I (..\UCOS-III\uC-LIB\lib_math.h)(0x657422C8)
 I (..\UCOS-III\uCOS_CONFIG\app_cfg.h)(0x657422C8)
 I (..\UCOS-III\UCOS_BSP\bsp.h)(0x657422C8)
 F (.\usart8.c)(0x68039F8B)(--c99 -c --cpu Cortex-M4.fp.sp -g -O0 --apcs=interwork --split_sections -I ..\USER -I ..\UCOS-III\uC-CPU -I ..\UCOS-III\uC-LIB -I ..\UCOS-III\uCOS-III -I ..\UCOS-III\UCOS_BSP -I ..\UCOS-III\uCOS_CONFIG -I ..\UCOS-III\uCOS-III\Source -I ..\UCOS-III\uC-CPU\ARM-Cortex-M4\RealView -I ..\UCOS-III\uC-LIB\Ports\ARM-Cortex-M4\RealView -I ..\UCOS-III\uCOS-III\Ports\ARM-Cortex-M4\Generic\RealView -I ..\HARDWARE -I ..\STM32\CORE -I ..\STM32\FWLIB\STM32F4xx_StdPeriph_Driver\inc -I ..\TASK -I ..\DSP-LIB -I ..\DSP-LIB\inc -I ..\HARDWARE\mpu6050_42mm-I.\RTE\_Template-ID:\LenovoSoftstore\KEIK5MDK\Arm\Packs\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-ID:\LenovoSoftstore\KEIK5MDK\ARM\CMSIS\Include-D__UVISION_VERSION="530" -DSTM32F427xx -D_RTE_ -DSTM32F427_437xx -DUSE_STDPERIPH_DRIVER -D__FPU_USED="1" -D__FPU_PRESENT -DARM_MATH_CM4 -D__CC_ARM -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING-o .\objects\usart8.o --omf_browse .\objects\usart8.crf --depend .\objects\usart8.d)
-I (..\HARDWARE\usart8.h)(0x6800C7C9)
+I (..\HARDWARE\usart8.h)(0x6805F4EC)
 I (..\HARDWARE\sys.h)(0x657422C8)
 I (..\USER\stm32f4xx.h)(0x657422C8)
 I (..\STM32\CORE\core_cm4.h)(0x657422C8)

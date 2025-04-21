@@ -9,13 +9,18 @@
 //#include "pstwo.h"
 #include "pwm.h"
 #include "includes.h"
+#include "usart69050.h"
+#include "usart2.h"
+#include "usart7.h"
+#include "usart8.h"
+
 int16_t Adc_Volt,limit_shift; //canͨѶ����
 
 
 
 void TX2_USART3_Init(void);
 
-/*
+
 void Chasis_task(void *p_arg)
 {
 		OS_ERR err;
@@ -66,64 +71,66 @@ void Chasis_task(void *p_arg)
 				readSnakeSpeed(can_id,0x02,0x03,0x06);
 			}
 			
-//
-			send motors encorder position to the master device
-			���͵������������ֵ����λ��
-//
-			uint8_t packet[79] = {0}; 			
-			// header: 0xAA55
-			packet[0] = 0xAA;
-			packet[1] = 0x55;
-			// id: 0x01
-			packet[2] = 0x01;
-			// data length: 0x4B (1 + 1 + 12 * 5 + 3*3 + 2 + 2) = 75
-			packet[3] = 0x4B;
-			// function code: 0x41
-			packet[4] = 0x41;
-			// motors number: 0x10 (16)
-			packet[5] = 0x10;
-			// sensors data
-			int idx = 6;
-			for (int i = 0; i < 12; ++i) {
-					packet[idx++] = currentSpeed_snake[i] & 0xFF;  // ��������ٶ� RPM
-					// encorder data
-					packet[idx++] = ((currentPosition_snake[i]) >> 24) & 0xFF;  
-					packet[idx++] = ((currentPosition_snake[i]) >> 16) & 0xFF;
-					packet[idx++] = ((currentPosition_snake[i]) >> 8) & 0xFF;
-					packet[idx++] = ((currentPosition_snake[i]) 		) & 0xFF;
-					
-			}
-			// GM6020
-			packet[idx++] =13;
-			packet[idx++] = (GM6020_absolute_position >> 8) & 0xFF;
-			packet[idx++] = GM6020_absolute_position & 0xFF;
-			// C610
-			packet[idx++] =14;
-			packet[idx++] = (C610_absolute_position >> 8) & 0xFF;
-			packet[idx++] = C610_absolute_position & 0xFF;
-			// STS3032
-			packet[idx++] =15;
-			packet[idx++] = (gripper_sts3032_position_control >> 8) & 0xFF;
-			packet[idx++] = gripper_sts3032_position_control & 0xFF;
-			// Reset state
-			packet[idx++] =16;
-			packet[idx++] = reset_control & 0xFF;
+			/************************************************************* 
+			  Send motor and IMU data to the master device via UART3
+			  (Replaces the previous UART sending logic in this task)
+			***************************************************************/
+			{ // Add scope for local variables
+				uint8_t tx_buffer[256]; // 发送缓冲区 (Use local buffer)
+				uint16_t tx_index = 0;  // 发送缓冲区索引
+				uint16_t crc16; // CRC16校验值
+				float temp_eular[3]; // 临时存储欧拉角数据
+
+				// 1. 添加帧头 (0xAA 0x55)
+				tx_buffer[tx_index++] = 0xAA;
+				tx_buffer[tx_index++] = 0x55;
+
+				// 2. 添加设备ID、长度、功能码、计数 (新帧头结构)
+				tx_buffer[tx_index++] = 0x01;       // Device ID
+				tx_buffer[tx_index++] = 0x6E;       // Payload Length (110 = 0x6E)
+				tx_buffer[tx_index++] = 0x41;       // Function Code
+				tx_buffer[tx_index++] = 0x10;       // Item Count (12 motors + 4 IMUs = 16)
+
+				// 3. 添加12个电机的位置数据 (48字节) - 大端格式
+				for (int i = 0; i < 12; i++) {
+					tx_buffer[tx_index++] = (currentPosition_snake[i] >> 24) & 0xFF;
+					tx_buffer[tx_index++] = (currentPosition_snake[i] >> 16) & 0xFF;
+					tx_buffer[tx_index++] = (currentPosition_snake[i] >> 8) & 0xFF;
+					tx_buffer[tx_index++] = currentPosition_snake[i] & 0xFF;
+				}
+
+				// 4. 添加12个电机的速度数据 (12字节)
+				for (int i = 0; i < 12; i++) {
+					tx_buffer[tx_index++] = currentSpeed_snake[i] & 0xFF;
+				}
+
+				// 5. 添加4个IMU的欧拉角数据 (4*3*4=48字节) - 小端格式
+				// (Ensure get_eularX function prototypes are available via included headers)
+				get_eular2(temp_eular);
+				for (int i = 0; i < 3; i++) { uint8_t *p = (uint8_t*)&temp_eular[i]; tx_buffer[tx_index++] = p[0]; tx_buffer[tx_index++] = p[1]; tx_buffer[tx_index++] = p[2]; tx_buffer[tx_index++] = p[3]; }
+				get_eular7(temp_eular);
+				for (int i = 0; i < 3; i++) { uint8_t *p = (uint8_t*)&temp_eular[i]; tx_buffer[tx_index++] = p[0]; tx_buffer[tx_index++] = p[1]; tx_buffer[tx_index++] = p[2]; tx_buffer[tx_index++] = p[3]; }
+				get_eular8(temp_eular);
+				for (int i = 0; i < 3; i++) { uint8_t *p = (uint8_t*)&temp_eular[i]; tx_buffer[tx_index++] = p[0]; tx_buffer[tx_index++] = p[1]; tx_buffer[tx_index++] = p[2]; tx_buffer[tx_index++] = p[3]; }
+				get_eular6(temp_eular);
+				for (int i = 0; i < 3; i++) { uint8_t *p = (uint8_t*)&temp_eular[i]; tx_buffer[tx_index++] = p[0]; tx_buffer[tx_index++] = p[1]; tx_buffer[tx_index++] = p[2]; tx_buffer[tx_index++] = p[3]; }
+
+				// 6. 计算CRC16校验值并添加到缓冲区末尾 (校验前 114 字节)
+                // (Ensure calc_crc16_modbus prototype is available via included uart3.h)
+				crc16 = calc_crc16_modbus(tx_buffer, tx_index); 
+				tx_buffer[tx_index++] = (crc16 >> 8) & 0xFF; // CRC高字节
+				tx_buffer[tx_index++] = crc16 & 0xFF;        // CRC低字节
+
+				// 7. 通过USART3发送整个数据包 (116 字节)
+				for (uint16_t i = 0; i < tx_index; i++) {
+					USART_ClearFlag(USART3,USART_FLAG_TC); // Clear TC flag before sending
+					USART_SendData(USART3, tx_buffer[i]);
+					while(USART_GetFlagStatus(USART3, USART_FLAG_TXE) == RESET); // 等待发送寄存器为空
+				}
+			} // End of scope for tx_buffer etc.
 			
-			// CRC-16 modbus
-			uint16_t crc = calc_crc16_modbus(packet, idx);
-			packet[idx++] = (crc >> 8) & 0xFF; 
-			packet[idx++] = crc & 0xFF;
-			// send back snake motor encorders to the master device
-			for(uint8_t i=0;i< sizeof(packet);i++){
-				// send to the usart3
-				USART_ClearFlag(USART3,USART_FLAG_TC);
-				USART_SendData(USART3,packet[i]);
-				while(USART_GetFlagStatus(USART3,USART_FLAG_TXE)==RESET);//�ж��Ƿ������
-			}
-			
-			OSTimeDly(8,OS_OPT_TIME_PERIODIC,&err); //��ʱ8ms	
+			OSTimeDly(10,OS_OPT_TIME_PERIODIC,&err); // 任务周期保持 8ms
 	}
 	
 }
-*/
 

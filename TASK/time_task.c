@@ -40,12 +40,12 @@ void Time_task(void *p_arg)
 		time_counter++;
 		
 		// 每隔MOTOR_IMU_DATA_SEND_PERIOD毫秒发送一次电机和IMU数据
-		if(++send_counter >= MOTOR_IMU_DATA_SEND_PERIOD/10)
-		{
+		// if(++send_counter >= MOTOR_IMU_DATA_SEND_PERIOD/10) // 旧的发送逻辑，现已移至 Chasis_task
+		// {
 			// 发送电机和IMU数据给上位机
-			TX2_Send_Motor_IMU_Data();
-			send_counter = 0;
-		}
+			// TX2_Send_Motor_IMU_Data(); // 不再在此任务中调用
+			// send_counter = 0;
+		// }
 		
 		// 任务周期为10ms
 		OSTimeDly(10, OS_OPT_TIME_PERIODIC, &err);

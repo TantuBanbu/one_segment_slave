@@ -59,3 +59,8 @@
 .\objects\chasis_task.o: ..\HARDWARE\delay.h
 .\objects\chasis_task.o: ..\HARDWARE\gpio.h
 .\objects\chasis_task.o: ..\HARDWARE\pwm.h
+.\objects\chasis_task.o: ..\HARDWARE\usart69050.h
+.\objects\chasis_task.o: D:\LenovoSoftstore\KEIK5MDK\ARM\ARMCC\Bin\..\include\stdbool.h
+.\objects\chasis_task.o: ..\HARDWARE\usart2.h
+.\objects\chasis_task.o: ..\HARDWARE\usart7.h
+.\objects\chasis_task.o: ..\HARDWARE\usart8.h

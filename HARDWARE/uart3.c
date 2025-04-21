@@ -144,21 +144,26 @@ uint8_t function_code;      // 功能码
 int32_t snake_motor_position_control[12];	// 蛇形机器人位置，每个数据包指一个位置
 int32_t snake_motor_speed_control[12];	// 速度
 // gripper gm6020 位置
+
 int16_t gripper_gm6020_position_control = 0;
 // gripper c610 位置
 int16_t gripper_c610_position_control = 0;
 // gripper sts3032 位置
 int16_t gripper_sts3032_position_control = 0;
 int16_t last_sts3032_control_value = 0;
+
 // 状态
 int16_t reset_control = 0;
 int16_t last_reset_control = 0;
-int16_t gripper_gm6020_position_reset_offset = 0;
-int16_t gripper_c610_position_reset_offset = 0;
-int16_t gripper_sts3032_position_reset_offset = 0;
+// 注释掉以下偏移量变量
+ int16_t gripper_gm6020_position_reset_offset = 0;
+ int16_t gripper_c610_position_reset_offset = 0;
+ int16_t gripper_sts3032_position_reset_offset = 0;
 
 
 // 初始化一些信息
+
+// 恢复原始长度为0x4B (75字节)，项目计数为0x10 (16项)
 uint8_t header_sequence[] = {0xAA, 0x55, 0x01, 0x4B, 0x31, 0x10}; // 固定包头
 uint8_t header_match_index = 0; // 接收包头匹配索引
 
@@ -206,7 +211,7 @@ void USART3_IRQHandler(void)
 
 						rx_buffer[rx_index++] = byte; // 将接收到的字符复制到rx_buffer
 
-					// 数据长度为0x AA 55 01之后一位为4B
+					// 数据长度为0x AA 55 01之后一位为4B (对应原始81字节帧)
 					expected_length = 0x4B;
 						// 接收预接收数据
             if (rx_index == expected_length + 4) { // +4 因为包头2个字节，地址和速度各2个字节
@@ -234,7 +239,8 @@ void USART3_IRQHandler(void)
 														offset += 4;
 												}
 												
-
+											
+												// 恢复夹爪电机解析逻辑
 												offset += 1;
 												gripper_gm6020_position_control = (rx_buffer[offset] << 8) | rx_buffer[offset + 1];
 												offset += 3;
@@ -346,16 +352,7 @@ void TX2_Transmit_Start(void)
 
 }
 
-/**
- * 向上位机发送电机和IMU数据
- * 数据格式：
- * - 帧头(2字节): 0xAA 0x55
- * - 数据长度(1字节): 包括数据长度字节后的所有数据的长度
- * - 电机位置数据(12*4=48字节): 12个电机的位置，每个电机4字节
- * - 电机速度数据(12*1=12字节): 12个电机的速度，每个电机1字节
- * - IMU欧拉角数据(4*3*4=48字节): 4个IMU的欧拉角(pitch, roll, yaw)，每个角度为4字节浮点数
- * - CRC16校验(2字节)
- */
+/* // Function definition commented out as it's no longer called after consolidating into Chasis_task
 void TX2_Send_Motor_IMU_Data(void)
 {
     uint8_t tx_buffer[256]; // 发送缓冲区
@@ -443,3 +440,4 @@ void TX2_Send_Motor_IMU_Data(void)
         while(USART_GetFlagStatus(USART3, USART_FLAG_TXE) == RESET); // 等待发送完成
     }
 }
+*/

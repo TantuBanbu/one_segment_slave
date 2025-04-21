@@ -14,7 +14,7 @@ void Init_task(void *p_arg);
 extern OS_TMR tmr1;  
 
 /*************Chasis task*************/
-#define EN_CHASIS_TASK 0u
+#define EN_CHASIS_TASK 1u
 void goahead(void);
 void off(void);
 void goback(void);

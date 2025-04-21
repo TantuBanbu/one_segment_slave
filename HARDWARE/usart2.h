@@ -6,13 +6,13 @@
 #include <stdint.h>
 #include <stdbool.h>
 
-#define USART2_MAX_RECV_LEN		256				//×î´ó½ÓÊÕ»º´æ×Ö½ÚÊý
-#define USART2_MAX_SEND_LEN		256				//×î´ó·¢ËÍ»º´æ×Ö½ÚÊý
-#define USART2_RX_EN 			1				      //0,²»½ÓÊÕ;1,½ÓÊÕ.
+#define USART2_MAX_RECV_LEN		256				//ï¿½ï¿½ï¿½ï¿½ï¿½Õ»ï¿½ï¿½ï¿½ï¿½Ö½ï¿½ï¿½ï¿½
+#define USART2_MAX_SEND_LEN		256				//ï¿½ï¿½ï¿½ï¿½Í»ï¿½ï¿½ï¿½ï¿½Ö½ï¿½ï¿½ï¿½
+#define USART2_RX_EN 			1				      //0,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½;1,ï¿½ï¿½ï¿½ï¿½.
 
 extern u8  USART2_RX_BUF[USART2_MAX_RECV_LEN]; 		
 extern u8  USART2_TX_BUF[USART2_MAX_SEND_LEN]; 		
-extern vu16 USART2_RX_STA;   		//½ÓÊÕÊý¾Ý×´Ì¬
+extern vu16 USART2_RX_STA;   		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×´Ì¬
 
 
 void USART2_init(void);
@@ -27,6 +27,10 @@ int get_raw_mag(int16_t* m);
 int get_id(uint8_t *user_id);
 int get_eular(float* e);
 int get_quat(float* q);
+
+// æ·»åŠ  get_eular2 çš„å£°æ˜Ž
+extern int get_eular2(float* e);
+
 #endif
 
 
